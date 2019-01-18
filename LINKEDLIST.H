@@ -9,29 +9,27 @@
  * char part[50] this is part from comand line
  * 
 */
-typedef struct utility
+typedef struct opt
 {
     char part[50];
-    struct utility *next;
-} utility;
+    struct opt *next;
+} opt;
 
-utility *head_command = NULL;
-utility *new_command = NULL;
-utility *current_command = NULL;
+opt *head_opt = NULL;
+opt *new_opt = NULL;
+opt *current_opt = NULL;
 
 /**
- * FUNCTION: command_maker
+ * FUNCTION: opt_maker
  * 
- * USED FOR LINKE COMMAND PARTS TO EACH OTHER
+ * USED FOR LINKE opts PARTS TO EACH OTHER
  * 
  * TAKE ARRAY OF CHAR WHICH WILL BE IN LINKING
  * 
- * return void
+ * return 0 in case of un success
  * 
 */
-void command_maker(char[]);
-
-
+int optList_maker(char[]);
 
 
 /**
@@ -66,5 +64,18 @@ file_list *current_file_list= NULL;
 */
 void filesList_maker(char *);
 
+
+
+
+/**
+ * FUNCTION: optListcorector
+ * 
+ * USED FOR CORRECTING THE OPT LIST FILE
+ * 
+ * 
+ * return void
+ * 
+*/
+void optListcorector(void);
 
 #endif

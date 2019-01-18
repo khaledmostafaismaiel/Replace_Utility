@@ -24,15 +24,15 @@ int nOf__ ;
 
 
 /**
- * FUNCTION: opt_filler
+ * FUNCTION: optTypeChecker
  * 
  *  USED TO TURN THE FLAGS OF THE OPTS ON IF THERE ARE 
  * 
  * TAKE THE command_head OF THE COMMAND AS A PARAMETER
  * 
- * RETURN VOID
+ * RETURN 1 IF THE PARAMETER WAS OPT
 */
-void opt_filler(utility *);
+int optTypeChecker(char *);
 
 
 
@@ -70,9 +70,11 @@ void dashcounter(char *) ;
  * 
  * USED FOR CHECKING THE THE VALIDITY OF -- IN THE COMMAND
  * 
+ * TAKE THE SECOND ELEMENT IN THE ARGV AS PRAMETER
+ * 
  * return void
  * 
 */
-void dashValidity(void) ;
+void dashValidity(char *) ;
 
 #endif

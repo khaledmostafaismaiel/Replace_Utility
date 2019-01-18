@@ -2,32 +2,45 @@
 #include <string.h>
 #include "LINKEDLIST.H"
 #include "HELPER.H"
+#define MAX_NUMBER_OF_OPTS 4
 
-void command_maker(char part[])
+int optList_maker(char part[])
 {
 
-    new_command = (utility *)malloc(sizeof(utility));
-
-    if (new_command == NULL)
+    if (optTypeChecker(part) == 0)
     {
-        puts(ANSI_COLOR_RED "HEAP IS UNDERFLOW CAN'T CREAT COMMAND LINKED LIST." ANSI_COLOR_RESET);
-        return;
+        return 0;
     }
 
-    if (head_command == NULL)
+    if ((nOf_b + nOf_f + nOf_i + nOf_l) > MAX_NUMBER_OF_OPTS)
     {
-        head_command = new_command;
-        strcpy(new_command->part, part);
-        new_command->next = NULL;
-        current_command = new_command;
+        puts(ANSI_COLOR_RED "THE MAX NUM OF OPTS IS 4." ANSI_COLOR_RESET);
+        exit(0);
+    }
+
+    new_opt = (opt *)malloc(sizeof(opt));
+
+    if (new_opt == NULL)
+    {
+        puts(ANSI_COLOR_RED "HEAP IS UNDERFLOW CAN'T CREAT COMMAND LINKED LIST." ANSI_COLOR_RESET);
+        return 0;
+    }
+
+    if (head_opt == NULL)
+    {
+        head_opt = new_opt;
+        strcpy(new_opt->part, part);
+        new_opt->next = NULL;
+        current_opt = new_opt;
     }
     else
     {
-        strcpy(new_command->part, part);
-        new_command->next = NULL;
-        current_command->next = new_command;
-        current_command = new_command;
+        strcpy(new_opt->part, part);
+        new_opt->next = NULL;
+        current_opt->next = new_opt;
+        current_opt = new_opt;
     }
+    return 1 ;
 }
 
 void filesList_maker(char *arr)

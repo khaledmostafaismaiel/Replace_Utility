@@ -60,6 +60,6 @@
  * RETURN POINTER TO THE PARTS AFTER CASTING
 */
 
-char * type_casting(utility *) ;
+//char * type_casting(utility *) ;
 
 #endif

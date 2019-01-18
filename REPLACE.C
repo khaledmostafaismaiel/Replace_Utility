@@ -4,35 +4,31 @@ int command_checker(void)
 {
 }
 
-void opt_filler(utility *head)
+int optTypeChecker(char *opt)
 {
 
-    utility *cursor = head;
-    while (cursor != NULL)
+    if ((strcmp(opt, "_B") == 0) || (strcmp(opt, "_b") == 0))
     {
-        if (strcmp(cursor->part, "--") == 0)
-        {
-            return;
-        }
-        else if ((strcmp(cursor->part, "_B") == 0) || (strcmp(cursor->part, "_b") == 0))
-        {
-            ++nOf_b;
-        }
-        else if ((strcmp(cursor->part, "_F") == 0) || (strcmp(cursor->part, "_f") == 0))
-        {
-            ++nOf_f;
-        }
-        else if ((strcmp(cursor->part, "_L") == 0) || (strcmp(cursor->part, "_l") == 0))
-        {
-            ++nOf_l;
-        }
-        else if ((strcmp(cursor->part, "_I") == 0) || (strcmp(cursor->part, "_i") == 0))
-        {
-            ++nOf_i;
-        }
-
-        cursor = cursor->next;
+        ++nOf_b;
+        return 1;
     }
+    else if ((strcmp(opt, "_F") == 0) || (strcmp(opt, "_f") == 0))
+    {
+        ++nOf_f;
+        return 1;
+    }
+    else if ((strcmp(opt, "_L") == 0) || (strcmp(opt, "_l") == 0))
+    {
+        ++nOf_l;
+        return 1;
+    }
+    else if ((strcmp(opt, "_I") == 0) || (strcmp(opt, "_i") == 0))
+    {
+        ++nOf_i;
+        return 1;
+    }
+
+    return 0;
 }
 
 int fileTypeChecker(char *file)
@@ -103,8 +99,15 @@ void dashcounter(char *part)
     }
 }
 
-void dashValidity(void)
+void dashValidity(char *argv)
 {
+
+    if (strcmp(argv, "--") == 0)
+    {
+        puts(ANSI_COLOR_RED "COMMAND LINE SYNTAX ERROR,'--' POSTION ERORR." ANSI_COLOR_RESET);
+        exit(0);
+    }
+
     if (nOf__ < 1)
     {
         puts(ANSI_COLOR_RED "UNVALID NUMBER OF '--' ,AT MIN YOU CAN USE ONLY 1 '--' ." ANSI_COLOR_RESET);

@@ -29,7 +29,7 @@ int nOfopts;
  * 
  * RETURN 1 IF THE PARAMETER WAS OPT
 */
-int optTypeChecker(char *);
+int optTypeChecker(char const *);
 
 /**
  * FUNCTION: fileTypeChecker
@@ -38,10 +38,10 @@ int optTypeChecker(char *);
  * 
  * TAKE POINTER TO THE ARRAY OF THE STRING
  * 
- * return 1 IN SUCCESS
+ * return void
  * 
 */
-int fileTypeChecker(char *);
+void fileTypeChecker(char const *);
 
 /**
  * FUNCTION: dashcounter 
@@ -53,7 +53,7 @@ int fileTypeChecker(char *);
  * RETURN void
 
 */
-void dashcounter(char *);
+void dashcounter(char const *);
 
 /**
  * FUNCTION: dashValidity
@@ -65,7 +65,18 @@ void dashcounter(char *);
  * return void
  * 
 */
-void dashValidity(char *);
+void dashValidity(char const *);
+
+/*
+char word[] = "pneumonoultramicroscopicsilicovolcanoconiosis";
+for(int i=1;word[i]!=NULL;++i){
+    printf("%d\n",i);
+}
+*/
+#define longesWordinTheworld 44
+
+char from[longesWordinTheworld];
+char to[longesWordinTheworld];
 
 /**
  * FUNCTION: fromToassin
@@ -76,10 +87,6 @@ void dashValidity(char *);
  * return void
  * 
 */
-#define longesWordinTheworld 44
-
-char from[longesWordinTheworld];
-char to[longesWordinTheworld];
-void fromToassin(char *, char *);
+void fromToassin(char const *, char const *);
 
 #endif

@@ -30,7 +30,7 @@ opt *current_opt = NULL;
  * return 0 in case of un success
  * 
 */
-int optList_maker(char[]);
+int optList_maker(char const *);
 
 /**
  * Struct file_list
@@ -60,7 +60,7 @@ file_list *current_file_list = NULL;
  * return void
  * 
 */
-void filesList_maker(char *);
+void filesList_maker(char const *);
 
 /**
  * FUNCTION: optListcorector
@@ -71,9 +71,6 @@ void filesList_maker(char *);
  * return void
  * 
 */
-
-
-
 
 
 

@@ -7,22 +7,22 @@ int command_checker(void)
 int optTypeChecker(char *opt)
 {
 
-    if ((strcmp(opt, "_B") == 0) || (strcmp(opt, "_b") == 0))
+    if ((strcmp(opt, "-b") == 0))
     {
         ++nOf_b;
         return 1;
     }
-    else if ((strcmp(opt, "_F") == 0) || (strcmp(opt, "_f") == 0))
+    else if ((strcmp(opt, "-f") == 0))
     {
         ++nOf_f;
         return 1;
     }
-    else if ((strcmp(opt, "_L") == 0) || (strcmp(opt, "_l") == 0))
+    else if ((strcmp(opt, "-l") == 0))
     {
         ++nOf_l;
         return 1;
     }
-    else if ((strcmp(opt, "_I") == 0) || (strcmp(opt, "_i") == 0))
+    else if ((strcmp(opt, "-i") == 0))
     {
         ++nOf_i;
         return 1;
@@ -120,4 +120,11 @@ void dashValidity(char *argv)
     }
 
     return;
+}
+
+void fromToassin(char *fromm, char *too)
+{
+
+    strcpy(from, fromm);
+    strcpy(to, too);
 }

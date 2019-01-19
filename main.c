@@ -13,6 +13,12 @@
 int main(int argc, char *argv[])
 {
 
+    /*
+char word[] = "pneumonoultramicroscopicsilicovolcanoconiosis";
+for(int i=1;word[i]!=NULL;++i){
+    printf("%d\n",i);
+}
+*/
     for (int i = 0; i < argc; ++i)
     {
         dashcounter(argv[i]);
@@ -71,7 +77,45 @@ int main(int argc, char *argv[])
     ;
     ;
     ;
-    puts("OPTIONS");
+    ;
+    for (int i = argc - 1; i >= 0; --i)
+    {
+        if (strcmp(argv[i], "--") == 0)
+        {
+            dashIndex = i;
+            i = 1;
+        }
+    }
+
+    if ((dashIndex - nOfopts) != 3)
+    {
+        if ((dashIndex - nOfopts) == 0)
+        {
+            puts(ANSI_COLOR_RED "COMMAND LINE SYNTAX ERROR,THERE ARE NO 'FROM AND 'TO' WORDS." ANSI_COLOR_RESET);
+        }
+        else if ((dashIndex - nOfopts) < 3)
+        {
+            puts(ANSI_COLOR_RED "COMMAND LINE SYNTAX ERROR,THERE ARE NO 'TO' WORD." ANSI_COLOR_RESET);
+        }
+        else if ((dashIndex - nOfopts) > 3)
+        {
+            puts(ANSI_COLOR_RED "COMMAND LINE SYNTAX ERROR,THERE ARE ALOTS OF 'FROM' AND 'TO' WORDS." ANSI_COLOR_RESET);
+        }
+        exit(0);
+    }
+
+    fromToassin(argv[dashIndex - 2], argv[dashIndex - 1]);
+    ;
+    ;
+    ;
+    ;
+
+    puts(ANSI_COLOR_YELLOW "from---to" ANSI_COLOR_RESET);
+
+    printf(ANSI_COLOR_YELLOW "%s\t%s\n" ANSI_COLOR_RESET, from, to);
+
+    puts(ANSI_COLOR_GREEN "OPTIONS" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_GREEN "%d\n" ANSI_COLOR_RESET, nOfopts);
 
     while (head_opt != NULL)
     {
@@ -79,7 +123,8 @@ int main(int argc, char *argv[])
         head_opt = head_opt->next;
     }
 
-    puts("\nFILES");
+    puts(ANSI_COLOR_RED "\nFILES" ANSI_COLOR_RESET);
+    printf(ANSI_COLOR_RED "%d\n" ANSI_COLOR_RESET, dashIndex);
 
     while (head_file_list != NULL)
     {

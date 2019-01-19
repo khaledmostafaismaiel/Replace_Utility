@@ -1,5 +1,6 @@
 #ifndef __LINKEDLIST_H_
 #define __LINKEDLIST_H_
+int dashIndex;
 
 /**
  * Struct utilty
@@ -31,7 +32,6 @@ opt *current_opt = NULL;
 */
 int optList_maker(char[]);
 
-
 /**
  * Struct file_list
  * 
@@ -48,9 +48,7 @@ typedef struct file_list
 
 file_list *head_file_list = NULL;
 file_list *new_file_list = NULL;
-file_list *current_file_list= NULL;
-
-
+file_list *current_file_list = NULL;
 
 /**
  * FUNCTION: filesList_maker
@@ -64,9 +62,6 @@ file_list *current_file_list= NULL;
 */
 void filesList_maker(char *);
 
-
-
-
 /**
  * FUNCTION: optListcorector
  * 
@@ -76,6 +71,10 @@ void filesList_maker(char *);
  * return void
  * 
 */
-void optListcorector(void);
+
+
+
+
+
 
 #endif

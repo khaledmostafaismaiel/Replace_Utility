@@ -12,7 +12,9 @@ int optList_maker(char part[])
         return 0;
     }
 
-    if ((nOf_b + nOf_f + nOf_i + nOf_l) > MAX_NUMBER_OF_OPTS)
+    nOfopts = (nOf_b + nOf_f + nOf_l + nOf_i);
+    
+    if ((nOfopts) > MAX_NUMBER_OF_OPTS)
     {
         puts(ANSI_COLOR_RED "THE MAX NUM OF OPTS IS 4." ANSI_COLOR_RESET);
         exit(0);
@@ -40,7 +42,7 @@ int optList_maker(char part[])
         current_opt->next = new_opt;
         current_opt = new_opt;
     }
-    return 1 ;
+    return 1;
 }
 
 void filesList_maker(char *arr)
@@ -74,4 +76,8 @@ void filesList_maker(char *arr)
         current_file_list->next = new_file_list;
         current_file_list = new_file_list;
     }
+    
 }
+
+
+

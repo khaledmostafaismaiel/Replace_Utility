@@ -13,15 +13,12 @@
 */
 int command_checker(void);
 
-
-
-
-int nOf_b ;
-int nOf_f ;
-int nOf_l ;
-int nOf_i ;
-int nOf__ ;
-
+int nOf_b;
+int nOf_f;
+int nOf_l;
+int nOf_i;
+int nOf__;
+int nOfopts;
 
 /**
  * FUNCTION: optTypeChecker
@@ -34,8 +31,6 @@ int nOf__ ;
 */
 int optTypeChecker(char *);
 
-
-
 /**
  * FUNCTION: fileTypeChecker
  * 
@@ -46,10 +41,7 @@ int optTypeChecker(char *);
  * return 1 IN SUCCESS
  * 
 */
-int fileTypeChecker(char *) ;
-
-
-
+int fileTypeChecker(char *);
 
 /**
  * FUNCTION: dashcounter 
@@ -61,9 +53,7 @@ int fileTypeChecker(char *) ;
  * RETURN void
 
 */
-void dashcounter(char *) ;
-
-
+void dashcounter(char *);
 
 /**
  * FUNCTION: dashValidity
@@ -75,6 +65,21 @@ void dashcounter(char *) ;
  * return void
  * 
 */
-void dashValidity(char *) ;
+void dashValidity(char *);
+
+/**
+ * FUNCTION: fromToassin
+ * 
+ * USED TO ASSIN 'FROM' AND 'TO' VALUES
+ * 
+ * 
+ * return void
+ * 
+*/
+#define longesWordinTheworld 44
+
+char from[longesWordinTheworld];
+char to[longesWordinTheworld];
+void fromToassin(char *, char *);
 
 #endif

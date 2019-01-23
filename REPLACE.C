@@ -1,5 +1,8 @@
 #include "REPLACE.H"
 
+
+#define _txt 5
+
 int command_checker(void)
 {
 }
@@ -12,7 +15,7 @@ int optTypeChecker(char const *opt)
         ++nOf_b;
         if (nOf_b == 2)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-b\".\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-b\".\a" ANSI_COLOR_RESET);
             exit(0);
         }
         return 1;
@@ -22,7 +25,7 @@ int optTypeChecker(char const *opt)
         ++nOf_f;
         if (nOf_f == 2)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-f\".\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-f\".\a" ANSI_COLOR_RESET);
             exit(0);
         }
         return 1;
@@ -32,7 +35,7 @@ int optTypeChecker(char const *opt)
         ++nOf_l;
         if (nOf_l == 2)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-l\".\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-l\".\a" ANSI_COLOR_RESET);
             exit(0);
         }
         return 1;
@@ -42,7 +45,7 @@ int optTypeChecker(char const *opt)
         ++nOf_i;
         if (nOf_i == 2)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-i\".\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"YOUR COMMAND NOT ALLOWED TO CONTAIN MORE THAN ONE \"-i\".\a" ANSI_COLOR_RESET);
             exit(0);
         }
         return 1;
@@ -58,9 +61,9 @@ void fileTypeChecker(char const *file)
     {
         ++numOfliters;
     }
-    if (numOfliters < 5)
+    if (numOfliters < _txt)
     {
-        puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:" ANSI_COLOR_RESET ANSI_COLOR_RED "'.txt' FILES ONLY ARE SUPPORTED.\a" ANSI_COLOR_RESET);
+        puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"'.txt' FILES ONLY ARE SUPPORTED.\a" ANSI_COLOR_RESET);
         exit(0);
     }
     for (int i = numOfliters - 1; i != (numOfliters - 5); --i)
@@ -73,7 +76,7 @@ void fileTypeChecker(char const *file)
         }
         else
         {
-            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:" ANSI_COLOR_RESET ANSI_COLOR_RED "'.txt' FILES ONLY ARE SUPPORTED, .tx* .\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"'.txt' FILES ONLY ARE SUPPORTED, .tx* .\a" ANSI_COLOR_RESET);
             exit(0);
         }
 
@@ -83,7 +86,7 @@ void fileTypeChecker(char const *file)
         }
         else
         {
-            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:" ANSI_COLOR_RESET ANSI_COLOR_RED "'.txt' FILES ONLY ARE SUPPORTED, .t*t .\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"'.txt' FILES ONLY ARE SUPPORTED, .t*t .\a" ANSI_COLOR_RESET);
             exit(0);
         }
         if ((file[numOfliters - 3] == 't') || ((file[numOfliters - 1] == 'T')))
@@ -93,7 +96,7 @@ void fileTypeChecker(char const *file)
         }
         else
         {
-            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:" ANSI_COLOR_RESET ANSI_COLOR_RED "'.txt' FILES ONLY ARE SUPPORTED, .*xt .\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"'.txt' FILES ONLY ARE SUPPORTED, .*xt .\a" ANSI_COLOR_RESET);
             exit(0);
         }
         if (file[numOfliters - 4] == '.')
@@ -103,7 +106,7 @@ void fileTypeChecker(char const *file)
         }
         else
         {
-            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:" ANSI_COLOR_RESET ANSI_COLOR_RED "'.txt' FILES ONLY ARE SUPPORTED.5, *txt .\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "TYPE FILE ERORR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"'.txt' FILES ONLY ARE SUPPORTED.5, *txt .\a" ANSI_COLOR_RESET);
             exit(0);
         }
     }
@@ -124,18 +127,18 @@ void dashValidity(char const *argv)
 
     if (strcmp(argv, "--") == 0)
     {
-        puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "'--' POSTION ERORR.\a" ANSI_COLOR_RESET);
+        puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"'--' POSTION ERORR.\a" ANSI_COLOR_RESET);
         exit(0);
     }
 
     if (nOf__ < 1)
     {
-        puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "UNVALID NUMBER OF '--' ,AT MIN YOU CAN USE ONLY 1 '--' .\a" ANSI_COLOR_RESET);
+        puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"UNVALID NUMBER OF '--' ,AT MIN YOU CAN USE ONLY 1 '--' .\a" ANSI_COLOR_RESET);
         exit(0);
     }
-    else if (nOf__ > 3)
+    else if (nOf__ > 2)
     {
-        puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "UNVALID NUMBER OF '--' ,AT MAX YOU CAN USE 3 '--' .\a" ANSI_COLOR_RESET);
+        puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"UNVALID NUMBER OF '--' ,AT MAX YOU CAN USE ONLY 2 '--' .\a" ANSI_COLOR_RESET);
         exit(0);
     }
 
@@ -149,7 +152,7 @@ void fromToassin(char const *fromm, char const *too)
     strcpy(to, too);
     if (strcmp(from, to) == 0)
     {
-        puts(ANSI_COLOR_RED Bold "LOGICAL ERORR:" ANSI_COLOR_RESET ANSI_COLOR_RED "YOUR \"FROM\" AND \"TO\" ARE THE SAME.\a" ANSI_COLOR_RESET);
+        puts(ANSI_COLOR_RED Bold "LOGICAL ERORR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"YOUR \"FROM\" AND \"TO\" ARE THE SAME.\a" ANSI_COLOR_RESET);
         exit(0);
     }
 }

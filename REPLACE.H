@@ -73,10 +73,10 @@ for(int i=1;word[i]!=NULL;++i){
     printf("%d\n",i);
 }
 */
-#define longesWordinTheworld 44
+#define LONGESTWORDINTHEWORLD 44
 
-char from[longesWordinTheworld];
-char to[longesWordinTheworld];
+char from[LONGESTWORDINTHEWORLD];
+char to[LONGESTWORDINTHEWORLD];
 
 /**
  * FUNCTION: fromToassin

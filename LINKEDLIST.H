@@ -3,9 +3,9 @@
 int dashIndex;
 
 /**
- * Struct utilty
+ * Struct opt
  * 
- * is structure for command line parts
+ * is structure for opts in the command
  * 
  * char part[50] this is part from comand line
  * 
@@ -55,23 +55,73 @@ file_list *current_file_list = NULL;
  * 
  * USED FOR creating list of files
  * 
- * Take pointer of head utilty
+ * Take pointer of THE HEAD FILES LIST
  * 
  * return void
  * 
 */
 void filesList_maker(char const *);
 
+
+
+
+
 /**
- * FUNCTION: optListcorector
+ * Struct fileContain
  * 
- * USED FOR CORRECTING THE OPT LIST FILE
+ * IS STRUCT FOR WORDS IN THE FILES
  * 
+ * WOLRD IS THE WORD IN THE FILE 
+ * 
+*/
+typedef struct fileContain
+{
+
+    char word[44];
+    struct fileContain *next;
+    struct fileContain *prev ;
+} fileContain;
+
+fileContain *head_fileContain = NULL;
+fileContain *tail_fileContain = NULL ;
+fileContain *new_fileContain = NULL;
+fileContain *current_fileContain = NULL;
+
+
+
+
+
+
+
+
+/**
+ * FUNCTION: fileContain_maker
+ * 
+ * USED FOR creating LIST OF WORDS
+ * 
+ * Take pointer of THE WORLD
  * 
  * return void
  * 
 */
+void fileContain_maker(char * ) ;
 
 
+
+
+
+
+typedef struct string{
+
+    char charact ;
+
+    struct string *next ;
+}string;
+
+void stringMaker(char );
+
+string *head_string = NULL;
+string *new_string = NULL;
+string *current_string = NULL;
 
 #endif

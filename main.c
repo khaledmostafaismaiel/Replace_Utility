@@ -30,7 +30,7 @@ int main(int argc, char const *argv[])
     {
         if (strcmp(argv[argc - 1], "--") == 0)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "THERE ARE NO FILES IN THIS COMMAND.\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE NO FILES IN THIS COMMAND.\a" ANSI_COLOR_RESET);
             exit(0);
         }
         if (strcmp(argv[i], "--") != 0)
@@ -76,15 +76,15 @@ int main(int argc, char const *argv[])
     {
         if ((dashIndex - nOfopts) == 0)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "THERE ARE NO 'FROM AND 'TO' WORDS.\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE NO 'FROM AND 'TO' WORDS.\a" ANSI_COLOR_RESET);
         }
         else if ((dashIndex - nOfopts) < 3)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "THERE ARE NO 'TO' WORD.\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE NO 'TO' WORD.\a" ANSI_COLOR_RESET);
         }
         else if ((dashIndex - nOfopts) > 3)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_RED "THERE ARE ALOTS OF 'FROM' AND 'TO' WORDS.\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE ALOTS OF 'FROM' AND 'TO' WORDS.\a" ANSI_COLOR_RESET);
         }
         exit(0);
     }
@@ -97,13 +97,28 @@ int main(int argc, char const *argv[])
     ;
     ;
     ;
+    ;
+    ;
+    ;
+    optImplement(head_file_list);
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
+    ;
 
-    puts(ANSI_COLOR_GREEN Bold "OPTIONS" ANSI_COLOR_RESET);
-    printf(ANSI_COLOR_GREEN "NUMBER OF OPTS = %d\n" ANSI_COLOR_RESET, nOfopts);
+
+    puts(ANSI_COLOR_White Bold "OPTIONS" ANSI_COLOR_RESET);
 
     while (head_opt != NULL)
     {
-        printf(ANSI_COLOR_GREEN "%s\n" ANSI_COLOR_RESET, head_opt->part);
+        printf(ANSI_COLOR_White "%s\n" ANSI_COLOR_RESET, head_opt->part);
         head_opt = head_opt->next;
     }
 
@@ -112,13 +127,24 @@ int main(int argc, char const *argv[])
     printf(ANSI_COLOR_YELLOW "%s\t%s\n" ANSI_COLOR_RESET, from, to);
 
     puts(ANSI_COLOR_CYAN Bold "FILES" ANSI_COLOR_RESET);
-    printf(ANSI_COLOR_CYAN "INDEX OF \"--\" = %d\n" ANSI_COLOR_RESET, dashIndex);
 
     while (head_file_list != NULL)
     {
         printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, head_file_list->file);
         head_file_list = head_file_list->next;
     }
+
+
+
+    puts(ANSI_COLOR_MAGENTA Bold "CONTAIN TAIL" ANSI_COLOR_RESET);
+
+    while (tail_fileContain != NULL)
+    {
+        printf(ANSI_COLOR_MAGENTA "%s\n" ANSI_COLOR_RESET, tail_fileContain->word);
+        tail_fileContain = tail_fileContain->prev;
+    }
+
+
 
     return 0;
 }

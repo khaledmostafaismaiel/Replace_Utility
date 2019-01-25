@@ -106,22 +106,4 @@ fileContain *current_fileContain = NULL;
 */
 void fileContain_maker(char * ) ;
 
-
-
-
-
-
-typedef struct string{
-
-    char charact ;
-
-    struct string *next ;
-}string;
-
-void stringMaker(char );
-
-string *head_string = NULL;
-string *new_string = NULL;
-string *current_string = NULL;
-
 #endif

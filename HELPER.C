@@ -1,5 +1,6 @@
 #include "HELPER.H"
 
+
 char *type_casting(char *word)
 {
 

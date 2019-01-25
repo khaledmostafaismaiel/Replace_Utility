@@ -110,4 +110,36 @@ void fileUpdate(char *, fileContain *);
  * RETURN POINTER TO THE WORD 
  */
 char *clearBits(char *);
+
+
+
+
+
+/* FUNCTION: allocurance
+ * 
+ * USED TO CHANGE ALL OCCURANCE OF FILE CONTIENT WHICH IS IDENT WITH FROM
+ * 
+ * TAKE A POINTER TO THE FILE WHICH WILL HANGE
+ * 
+ * TAKE POINTER TO THE FILE CONTENT WHICH IT WILL SEARCHED IN 
+ * 
+ * RETURN VOID
+ */
+void allocurance(char *, fileContain *);
+
+
+
+
+/* FUNCTION: clearNodes
+ * 
+ * USED TO CLEAR ALL LINKED LIST NODES
+ * 
+ * TAKE POINTER TO THE HEAD OF THE LINKED LIST
+ * 
+ * RETURN VOID
+ */
+void clearNodes(fileContain *) ;
+
+
 #endif
+

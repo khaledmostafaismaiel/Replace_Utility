@@ -84,16 +84,6 @@ void fileContain_maker(char *string)
     }
 
 
-/*
-    char string[LONGESTWORDINTHEWORLD];
-    int i = 0;
-
-    while (cursor != NULL)
-    {
-        string[i] = cursor->charact;
-        cursor = cursor->next;
-    }
-*/
     if (head_fileContain == NULL)
     {
         head_fileContain = new_fileContain;
@@ -115,32 +105,5 @@ void fileContain_maker(char *string)
         current_fileContain->next = new_fileContain;
         tail_fileContain = new_fileContain ;
         current_fileContain = new_fileContain;
-    }
-}
-
-
-void stringMaker(char c)
-{
-
-    new_string = (string *) malloc (sizeof(string));
-
-
-    if (head_string == NULL)
-    {
-        head_string = new_string;
-
-        new_string->charact = c ;
-
-        new_string->next = NULL;
-        current_string = new_string;
-    }
-    else
-    {
-
-        new_string->charact = c ;
-
-        new_string->next = NULL;
-        current_string->next = new_string;
-        current_string = new_string;
     }
 }

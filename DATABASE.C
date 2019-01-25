@@ -83,7 +83,7 @@ void b_Implemit(char *file)
 
 void f_Implemit(char *file, fileContain *cursor)
 {
-    if (nOf_i = 1)
+    if (nOf_i == 1)
     {
         while (cursor != NULL)
         {
@@ -111,14 +111,14 @@ void f_Implemit(char *file, fileContain *cursor)
             cursor = cursor->next;
         }
 
-        printf(Bold ANSI_COLOR_Bright_Red "SHOFT B2A ENK 5AWAL, AL \"%s\" MAFEHO4 \"%s\" YA 5AWAL. :/\n" ANSI_COLOR_RESET, file, from);
+        printf(Bold ANSI_COLOR_Bright_Red "\"%s\" HAS NO \"%s\".\n" ANSI_COLOR_RESET, file, from);
     }
 }
 
 void l_Implemit(char *file, fileContain *cursor)
 {
 
-    if (nOf_i = 1)
+    if (nOf_i == 1)
     {
         while (cursor != NULL)
         {
@@ -149,7 +149,7 @@ void l_Implemit(char *file, fileContain *cursor)
         }
     }
 
-    printf(Bold ANSI_COLOR_Bright_Red "SHOFT B2A ENK 5AWAL, AL \"%s\" MAFEHO4 \"%s\" YA 5AWAL. :/\n" ANSI_COLOR_RESET, file, from);
+    printf(Bold ANSI_COLOR_Bright_Red "\"%s\" HAS NO \"%s\".\n" ANSI_COLOR_RESET, file, from);
 }
 
 void optImplement(file_list *cursor)
@@ -158,19 +158,27 @@ void optImplement(file_list *cursor)
     {
         DB_convertor(cursor->file, head_fileContain);
 
-        if (nOf_b == 1)
+        if ((nOfopts == 0) || (nOfopts == nOf_i))
         {
-            b_Implemit(cursor->file);
+            allocurance(cursor->file, head_fileContain);
         }
-        if (nOf_f == 1)
+        else
         {
-            f_Implemit(cursor->file, head_fileContain);
+            if (nOf_b == 1)
+            {
+                b_Implemit(cursor->file);
+            }
+            if (nOf_f == 1)
+            {
+                f_Implemit(cursor->file, head_fileContain);
+            }
+            if (nOf_l == 1)
+            {
+                l_Implemit(cursor->file, tail_fileContain);
+            }
         }
-        if (nOf_l == 1)
-        {
-            l_Implemit(cursor->file, tail_fileContain);
-        }
-        head_fileContain = NULL; // TO INSERT THE NEXT FILE IN THE SAME LINKED LIST
+
+        clearNodes(head_fileContain);
         cursor = cursor->next;
     }
 }
@@ -184,6 +192,18 @@ char *clearBits(char *word)
     return word;
 }
 
+void clearNodes(fileContain *head_fileContain)
+{
+
+    fileContain *temp = head_fileContain;
+
+    while (temp != NULL)
+    {
+        free(head_fileContain);
+        head_fileContain = temp->next;
+        temp = head_fileContain;
+    }
+}
 void DB_convertor(char *file, fileContain *cursor)
 {
     char transit[LONGESTWORDINTHEWORLD];
@@ -219,12 +239,16 @@ void DB_convertor(char *file, fileContain *cursor)
             strcpy(transit, clearBits(transit));
         }
     }
+    if(i> 0){
+                    fileContain_maker(transit);
+
+    }
     fclose(pFile);
 }
 void fileUpdate(char *file, fileContain *cursor)
 {
 
-    int lno, ctr = 0;
+    //int lno, ctr = 0;
     char ch;
     FILE *fptr1, *fptr2;
 
@@ -241,6 +265,46 @@ void fileUpdate(char *file, fileContain *cursor)
     fclose(fptr2);
     remove(file);
     rename("temp.txt", file);
+
+    return;
+}
+
+void allocurance(char *file, fileContain *cursor)
+{
+    int flag = 0;
+
+    if (nOf_i == 1)
+    {
+        while (cursor != NULL)
+        {
+
+            if (strcmp(type_casting(cursor->word), type_casting(from)) == 0)
+            {
+                strcpy(cursor->word, to);
+                fileUpdate(file, head_fileContain);
+                flag = 1;
+            }
+            cursor = cursor->next;
+        }
+    }
+    else
+    {
+        while (cursor != NULL)
+        {
+
+            if (strcmp(cursor->word, from) == 0)
+            {
+                strcpy(cursor->word, to);
+                fileUpdate(file, head_fileContain);
+                flag = 1;
+            }
+            cursor = cursor->next;
+        }
+    }
+    if (flag == 0)
+    {
+        printf(Bold ANSI_COLOR_Bright_Red "\"%s\" HAS NO \"%s\".\n" ANSI_COLOR_RESET, file, from);
+    }
 
     return;
 }

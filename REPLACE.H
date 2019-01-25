@@ -1,6 +1,11 @@
 #ifndef __REPLCAE_H_
 #define __REPLACE_H_
 
+
+#define LONGESTWORDINTHEWORLD 44
+
+
+
 /**
  * FUNCTION: command_checker
  * 
@@ -73,7 +78,6 @@ for(int i=1;word[i]!=NULL;++i){
     printf("%d\n",i);
 }
 */
-#define LONGESTWORDINTHEWORLD 44
 
 char from[LONGESTWORDINTHEWORLD];
 char to[LONGESTWORDINTHEWORLD];
@@ -89,4 +93,28 @@ char to[LONGESTWORDINTHEWORLD];
 */
 void fromToassin(char const *, char const *);
 
+
+
+/**
+ * FUNCTION: readMe
+ * 
+ * USED FOR GIVE A SHORT NOTE FOR THE REPLCAE UTILITY USAGE
+ * 
+ * RETURN VOID
+*/
+void readMe(void);
+
+
+
+
+
+
+/**
+ * FUNCTION: fromAndtoCases
+ * 
+ * USED TO CHECK VALIDITY OF FROM AND TO STRINGS
+ * 
+ * RETURN VOID
+*/
+void fromAndtoCases(void);
 #endif

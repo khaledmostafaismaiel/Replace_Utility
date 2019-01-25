@@ -1,36 +1,61 @@
+//THIS PROGRAM IS A REPLACE UTILITY
+//USED TO REPLACE STRING WITH OTHER STRING
+//        replace opt <from> <to> -- <filename.txt> [<filename.txt>]*
+//"where opt can be zero or 4"
+//"o -b"
+//"o -f"
+//"o -l"
+//"o -i"
+//"COMMAND LINE ARGUMENTS AND OPTIONS");
+//from:string to be replaced with string "to"string that will replace with string " ANSI_COLOR_Bright_Black "from.
+//"filename":the file(s) on which the replace operation has to be performed.");
+//"-b": if specified, the replace utility creates a backup copy of each file on which a replace operations is performed before modifing it.
+//"-f": if specified, the replace utility only replace the first occurance of string from in each file.
+//"-l": if specified, the replace utility only replace the lastt occurance of string from in each file.
+//"-i": if specified, the replace utility performe the search for string from in a case insensitive way.
+//AUTHOR : KHALED MOSTAFA
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <ctype.h>
 #include "LINKEDLIST.H"
 #include "HELPER.H"
 #include "REPLACE.H"
 #include "DATABASE.H"
+
+
+#define indexOfreplace 1
+
 
 #include "LINKEDLIST.C"
 #include "HELPER.C"
 #include "REPLACE.C"
 #include "DATABASE.C"
 
+
 int main(int argc, char const *argv[])
 {
+
+    if (argc == indexOfreplace)
+    {
+        //NO ARGUMENT IN THIS COMMAND
+        readMe();
+        exit(0);
+    }
 
     for (int i = 0; i < argc; ++i)
     {
         dashcounter(argv[i]);
     }
 
-    dashValidity(argv[1]);
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
+    dashValidity(argv[1]); //TO CHECK IF THERE ARE NO OPTS ,<FROM> AND <TO>
+
+    //LOOP FROM THE END OF THE ARGV ARRAY TO SAVE THE FILES IN THE filesList_maker
     for (int i = argc - 1; i != 0; --i)
     {
         if (strcmp(argv[argc - 1], "--") == 0)
         {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE NO FILES IN THIS COMMAND.\a" ANSI_COLOR_RESET);
+            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:" ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow "THERE ARE NO FILES IN THIS COMMAND.\a" ANSI_COLOR_RESET);
             exit(0);
         }
         if (strcmp(argv[i], "--") != 0)
@@ -39,14 +64,12 @@ int main(int argc, char const *argv[])
         }
         else
         {
-            i = 1;
+            i = 1; //stoping condition
         }
-    };
-    ;
-    ;
-    ;
-    ;
-    ;
+    }
+
+    //LOOP FROM THE START OF THE ARGV ARRAY TO SAVE THE OPTS IN THE optsList_maker
+
     for (int i = 1; i < argc; ++i)
     {
 
@@ -55,14 +78,11 @@ int main(int argc, char const *argv[])
         }
         else
         {
-            i = argc - 1;
+            i = argc - 1; //stoping condition
         }
-    };
-    ;
-    ;
-    ;
-    ;
-    ;
+    }
+
+    //LOOP TO ASIN THE dashIndex
     for (int i = argc - 1; i >= 0; --i)
     {
         if (strcmp(argv[i], "--") == 0)
@@ -71,80 +91,14 @@ int main(int argc, char const *argv[])
             i = 1;
         }
     }
-    nOfopts = nOf_b + nOf_f + nOf_i + nOf_l;
-    if ((dashIndex - nOfopts) != 3)
-    {
-        if ((dashIndex - nOfopts) == 0)
-        {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE NO 'FROM AND 'TO' WORDS.\a" ANSI_COLOR_RESET);
-        }
-        else if ((dashIndex - nOfopts) < 3)
-        {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE NO 'TO' WORD.\a" ANSI_COLOR_RESET);
-        }
-        else if ((dashIndex - nOfopts) > 3)
-        {
-            puts(ANSI_COLOR_RED Bold "SYNTAX ERROR:"ANSI_COLOR_RESET ANSI_COLOR_Bright_Yellow"THERE ARE ALOTS OF 'FROM' AND 'TO' WORDS.\a" ANSI_COLOR_RESET);
-        }
-        exit(0);
-    }
 
-    fromToassin(argv[dashIndex - 2], argv[dashIndex - 1]);
+    //CALCULATE NUMBER OF <FROM> AND <TO> STRINGS
 
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
+    fromAndtoCases();
+
+    fromToassin(argv[fromIndex], argv[toIndex]);
+
     optImplement(head_file_list);
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-    ;
-
-
-    puts(ANSI_COLOR_White Bold "OPTIONS" ANSI_COLOR_RESET);
-
-    while (head_opt != NULL)
-    {
-        printf(ANSI_COLOR_White "%s\n" ANSI_COLOR_RESET, head_opt->part);
-        head_opt = head_opt->next;
-    }
-
-    puts(ANSI_COLOR_YELLOW Bold "from---to" ANSI_COLOR_RESET);
-
-    printf(ANSI_COLOR_YELLOW "%s\t%s\n" ANSI_COLOR_RESET, from, to);
-
-    puts(ANSI_COLOR_CYAN Bold "FILES" ANSI_COLOR_RESET);
-
-    while (head_file_list != NULL)
-    {
-        printf(ANSI_COLOR_CYAN "%s\n" ANSI_COLOR_RESET, head_file_list->file);
-        head_file_list = head_file_list->next;
-    }
-
-
-
-    puts(ANSI_COLOR_MAGENTA Bold "CONTAIN TAIL" ANSI_COLOR_RESET);
-
-    while (tail_fileContain != NULL)
-    {
-        printf(ANSI_COLOR_MAGENTA "%s\n" ANSI_COLOR_RESET, tail_fileContain->word);
-        tail_fileContain = tail_fileContain->prev;
-    }
-
-
 
     return 0;
 }
